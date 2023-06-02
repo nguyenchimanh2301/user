@@ -7,15 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  sum:number=0;
-  products:any
+  products:any;
+  name:any
   constructor() { }
      
   ngOnInit(): void {
-   this.products = JSON.parse(localStorage.getItem('cart') || '[]');
-   this.products.map((x:any)=>{
-    this.sum+=1;
-   })
+   this.products = JSON.parse(localStorage.getItem('user') || '{}');
+   this.name = this.products.hoTen;
   }
 
 }

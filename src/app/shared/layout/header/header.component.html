@@ -42,7 +42,7 @@
                       </ul>
                    </li>
           <li class="dropdown">
-           <a class="text_1 dropdown-toggle" href="#" data-toggle="dropdown">Đăng nhập<span class="caret"></span></a>
+           <a class="text_1 dropdown-toggle" href="#" data-toggle="dropdown" [routerLink]="['']">Đăng nhập<span class="caret"></span></a>
              <ul id="login-dp" class="dropdown-menu">
                  <li>
                       <div class="row">
@@ -109,15 +109,15 @@
              <!-- Collect the nav links, forms, and other content for toggling -->
              <div class="collapse navbar-collapse" id="navbar-brand-centered">
                <ul class="nav navbar-nav">
-                 <li><a class="text_2 active_1" href="index.html">TRANG CHỦ</a></li>
-                 <li><a class="text_2" [routerLink]="['/list_product']">KÌ NGHỈ</a></li>
+                 <li><a class="text_2 active_1" [routerLink]="['/index']">TRANG CHỦ</a></li>
+                 <li><a class="text_2"[routerLink]="['/list_product']">KÌ NGHỈ</a></li>
                  <li><a class="text_2" [routerLink]="['/news']">TIN TỨC</a></li>
-                 <li><a class="text_2" [routerLink]="['/list_product']">CHUYẾN ĐI</a></li>
+                 <li><a class="text_2" [routerLink]="['/cart']">YÊU THÍCH</a></li>
                  <li><a class="text_2" href="contact.html">LIÊN HỆ</a></li>
-                 <li><a class="text_2" href="pages.html">KIỂU CHỮ</a></li>
+                 <li><a class="text_2" href="pages.html">THÔNG TIN</a></li>
                </ul>
                <ul class="nav navbar-nav navbar-right">
-                 <li class="right_tag"><a href="#"><i class="fa fa-envelope"></i>info@gmail.com</a></li>
+                 <li class="right_tag"><a href="#"><i class="fa fa-user"></i>Xin chào {{name}}</a></li>
                </ul>
              </div><!-- /.navbar-collapse -->
  

@@ -1,68 +1,81 @@
-import { Component, OnInit } from '@angular/core';
+
 import { CartService } from 'src/app/service/cartservice';
-import { Router, ActivatedRoute, } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-  public list_cart:any
-  public total=0;
-  constructor(private cart_sv:CartService,private route:Router) { }
+    list_product:any
+    page:number = 1;
+    count:number = 0;
+    table_size:number = 9;
+    table_numberSize:any = [6,9,12];
+    size:any = 5;
+    category:any; 
+    price1:any = [0,50000,100000,200000,300000,500000];
+    price2:any = [0,50000,100000,200000,500000];
+    gia1:any;
+    gia2:any;
+     public host = environment.BASE_API;
+  constructor(private http:HttpClient,private cartsv:CartService) { }
 
   ngOnInit(): void {
-    this.list_cart = JSON.parse(localStorage.getItem('cart') || '[]');;
-    console.log(this.list_cart);
-    this.total = this.list_cart.reduce((sum:any, x:any) => sum +  x.unit_price * x.quantity, 0);
+    
+    this.list_product = JSON.parse(localStorage.getItem('cart') || '[]');
+    console.log(this.list_product);
+    this.http.get(this.host+'/get_all_loaihomestay').subscribe(res=>{
+      this.category = res;
+    })
   }
-  
-  public Giam(maSanPham: any) {
-    var index:number = this.list_cart.findIndex((x: any) => x.id == maSanPham);
-    console.log(index);
-    if (index >= 0 && this.list_cart[index].quantity >= 1) {
-      this.list_cart[index].quantity -= 1;
-    localStorage.setItem('cart', JSON.stringify(this.list_cart));
-      this.total = this.list_cart.reduce((sum:any, x:any) => sum + x.unit_price  * x.quantity, 0);
+  load():void{
+    this.http.get('https://localhost:44310/get_list_product').subscribe(res=>{
+      this.list_product = res;
+    })
+  }
+  sizeChange(event:any):void{
+    this.table_size = event.target.value;
+    this.page = 1;
+    this.load();
+  }
+  dataChange(event:any):void{
+    this.page = event;
+    this.load();
+  }
+  addcart(item:any){
+    this.cartsv.addToCart(item);
+    alert('THÊM VÀO GIỎ HÀNG THÀNH CÔNG')
+  }
+  Filter(item:any){
+    this.http.get(this.host+'/Search_by_idcategory?id='+item.id).subscribe(res=>{
+      this.list_product = res;
+      console.log(this.list_product);
+    })
+  }
+  Filter2(event:any){
+    this.gia1 = (<HTMLInputElement>document.getElementById('price1')).value;
+    this.gia2 = event.target.value;
+    console.log(this.gia1,this.gia2);
+    this.http.get(this.host+'/Search_by_price?price1='+this.gia1+'&price2='+this.gia2).subscribe(res=>{
+      this.list_product = res;
+      console.log(this.list_product);
+    })
+  }
+  search(){
+    let name = (<HTMLInputElement>document.getElementById('name')).value;
+    // let addr = (<HTMLInputElement>document.getElementById('address')).value;
+    let loaip = (<HTMLInputElement>document.getElementById('loaip')).value;
+    console.log(loaip);
+    try{
+      this.http.get(this.host+'/Search_Homstay?='+name+'&idloai='+loaip).subscribe(data=>{
+        this.list_product = data;
+      });
+    }
+    catch(err){
+      console.log(err);
     }
   }
-  public Tang(maSanPham: any) {
-    var index = this.list_cart.findIndex((x: any) => x.maSanPham == maSanPham);
-    if (index >= 0) {
-      this.list_cart[index].quantity += 1;
-      this.total = this.list_cart.reduce((sum:any, x:any) => sum + x.unit_price  * x.quantity, 0);
-    }
-  }
-  public XoaCart() {
-    if (confirm("Bạn muốn xóa tất cả sản phẩm khỏi giỏ hàng!")) {
-        localStorage.setItem('cart','');
-        this.list_cart = null;
-        this.total = 0;
-    }
-  }
-  public updateCart() {
-    localStorage.setItem('cart', JSON.stringify(this.list_cart));
-    alert("Đã cập nhật thông tin giỏ hàng thành công!");
-  }
-  public incre(item:any) {
-     this.cart_sv.addToCart(item);
-     this.list_cart = JSON.parse(localStorage.getItem('cart') || '[]');
-     this.total = this.list_cart.reduce((sum:any, x:any) => sum + x.unit_price  * x.quantity, 0);
-  }
-  public Xoa(maSanPham: any) {
-    if (confirm("Bạn muốn xóa sản phẩm này khỏi giỏ hàng!")) {
-      var index = this.list_cart.findIndex((x: any) => x.id == maSanPham);
-      if (index >= 0) {
-        this.list_cart.splice(index, 1);
-        this.total = this.list_cart.reduce((sum:any, x:any) => sum + x.unit_price  * x.quantity, 0);
-      }
-    }
-  }
-  checkout():void{
-    this.route.navigate(['/', 'checkout']);
-  }
-  updatec(){
-    this.total = this.list_cart.reduce((sum:any, x:any) => sum + x.unit_price  * x.quantity, 0);
-  }
-
 }

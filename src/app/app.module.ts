@@ -12,6 +12,8 @@ import { SearchComponent } from './shared/layout/search/search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ListproductComponent } from './modules/home/listproduct/listproduct.component';
+import { LoginComponent } from './modules/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,7 +24,8 @@ import { ListproductComponent } from './modules/home/listproduct/listproduct.com
     FooterComponent,
     IndexComponent,
     SearchComponent,
-    ListproductComponent
+    ListproductComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,9 @@ import { ListproductComponent } from './modules/home/listproduct/listproduct.com
     HttpClientModule,
     RouterModule,
     NgxPaginationModule,
-    CartModule
+    CartModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,10 +8,12 @@ import { IndexComponent } from './home/index/index.component';
 import { DetailComponent } from './home/detail/detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewsComponent } from './home/news/news.component';
+import { LoginComponent } from './login/login.component';
 
 export const MainRoutes: Routes = [
   
-    { path: '', component: IndexComponent },
+      { path: '', component: LoginComponent },
+      { path: 'index', component: IndexComponent },
       { path: 'cart', component: CartComponent },
       { path: 'checkout', component:CheckoutComponent },
       { path: 'list_product', component:ListproductComponent },

@@ -302,9 +302,9 @@ Your email address will not be published. Required fields are marked *</p>
 					
 					</div>
 					<div class="row">
-						<div class="checkout__input">
+						<div class="checkout__input" style="margin-left: 15px;">
 						<label for="checkin">Ngày nhận phòng:</label>
-						<input type="date" id="checkin" name="checkin" required>
+						<input type="date" id="checkin" name="checkin" required >
 				  
 						<label for="checkout">Ngày trả phòng:</label>
 						<input type="date" id="checkout" name="checkout" required>
@@ -377,18 +377,10 @@ Your email address will not be published. Required fields are marked *</p>
 						Total <span>{{ total | currency : "VND" }}</span>
 					  </div> -->
 					  <div class="checkout__input__checkbox">
-						<label for="paypal">
-						  Thanh toán trực tiếp
-						  <input type="checkbox" id="paypal" />
-						  <span class="checkmark"></span>
-						</label>
-					  </div>
-					  <div class="checkout__input__checkbox">
-						<label for="paypal">
-						  Thanh toán online
-						  <input type="checkbox" id="paypal" />
-						  <span class="checkmark"></span>
-						</label>
+						<select name="" id="thanhtoan">
+							<option value=true>Thanh toán onine</option>
+							<option value=false>Thanh toán tại quầy</option>
+						</select>
 					  </div>
 					  <button type="submit" class="btn btn-success">ĐẶT PHÒNG</button>
 					</div>

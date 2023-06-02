@@ -39,6 +39,10 @@ export class DetailComponent implements OnInit , OnDestroy {
   this.loadsp();
 
 }
+
+
+
+
   ngOnDestroy(): void {
       this.subscription.unsubscribe();
   }
@@ -50,7 +54,7 @@ export class DetailComponent implements OnInit , OnDestroy {
     localStorage.removeItem('id');
   }
   load(){
-    let id_lsp:any = JSON.parse(localStorage.getItem('id') || '{}');
+    let id_lsp:any = JSON.parse(localStorage.getItem('cart') || '{}');
     console.log(id_lsp);
     this.http.get('https://localhost:44310/get_cung_loai?id_lsp='+id_lsp.id_loai_sp).subscribe(data => {
       this.listProduct = data;
@@ -92,12 +96,15 @@ public close():void{
   this.popup = true;
 }
 public onSubmit(val: any) {
+const thanhtoan: string = (document.getElementById("thanhtoan") as HTMLInputElement).value; 
 
 const inputDate: string = (document.getElementById("checkin") as HTMLInputElement).value; 
 const inputDate2: string = (document.getElementById("checkout") as HTMLInputElement).value; // Thay "myDateInput" bằng ID của trường ngày
-const formattedDate: string = moment(inputDate).toISOString();
-const formattedDate2: string = moment(inputDate2).toISOString();
-
+const formattedDate = moment(inputDate, "YYYY-MM-DD");
+const formattedDate2 = moment(inputDate2, "YYYY-MM-DD");
+const duration = moment.duration(formattedDate2.diff(formattedDate));
+const numberOfDays = duration.asDays();
+console.log(numberOfDays);
   let obj: any = {}
     obj.kh={
       "tenKh": val.txt_name,
@@ -105,19 +112,18 @@ const formattedDate2: string = moment(inputDate2).toISOString();
       "diaChi": val.txt_address,
       "sdt": val.txt_sdt,
       "note": "oke"
-      
     },
     obj.donhang=
       {
         "idp": this.product_Detail.id,
-        "tongthoigiandat": 0,
+        "tongthoigiandat": numberOfDays,
         "dongia": this.product_Detail.gia,
         "thanhtien": 0,
         "idpNavigation": {
           "id": 0,
           "tenPhong": "string",
           "idloaiPhong": 0,
-          "dongia": 0,
+          "dongia": numberOfDays,
           "anh": "string",
           "trangthai": true,
           "ngayThem": "2023-05-31T09:07:25.298Z",
@@ -138,8 +144,8 @@ const formattedDate2: string = moment(inputDate2).toISOString();
       "tenkh": "string",
       "ngaydat": formattedDate,
       "ngaytra": formattedDate2,
-      "thanhtien": "string",
-      "thanhtoan": true,
+      "thanhtien": String(this.product_Detail.gia * numberOfDays),
+      "thanhtoan": Boolean(thanhtoan),
       "idkhNavigation": {  "tenKh": "string",
       "email": "string",
       "diaChi": "string",
