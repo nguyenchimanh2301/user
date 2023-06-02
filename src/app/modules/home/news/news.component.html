@@ -1,0 +1,26 @@
+<section id="details">
+	<div class="container">
+	<div class="row">
+	<div class="col-sm-12">
+    <h1>Tin tức về Homestay - Tận hưởng trải nghiệm du lịch độc đáo</h1>
+  
+    <div class="article" *ngFor="let item of baiviet">
+      <h2>{{item.title}}</h2>
+      <div class="date">{{item.ngaydangbai}}</div>
+      <div class="content">
+        <img src="homestay1.jpg" alt="Homestay mở rộng tại những điểm du lịch nổi tiếng" class="image">
+        <p>{{item.noidung}}</p>
+      </div>
+    </div>
+  
+   
+    <div class="related-articles">
+      <h3>Tin tức liên quan</h3>
+      <ul>
+        <li><a href="#">Homestay - Lựa chọn lưu trú thú vị cho chuyến du lịch</a></li>
+        <li><a href="#">Những homestay nổi tiếng trên thế giới bạn không thể bỏ qua</a></li>
+        <li><a href="#">Những bí quyết chọn homestay phù hợp với nhu cầu của bạn</a></li>
+      </ul>
+    </div>
+	</div>
+

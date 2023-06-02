@@ -1,0 +1,1811 @@
+<section id="chart">
+    <div class="container">
+     <div class="row">
+      <div class="chart_1 clearfix">
+         <div class="book col-sm-4">
+           <div class="col-sm-6 space_left book_1">
+             <p>Tên</p>
+             <input  class="form-control" placeholder="Type Minimum 3 letters" type="text" id="name">
+           </div>
+           <div class="col-sm-6 space_left  book_1">
+             <p>Địa Điểm</p>
+             <input class="form-control" placeholder="Type Minimum 3 letters" type="text" id="addres">
+           </div>
+         </div>
+         <div class="col-sm-3  journey">
+                 <p>Ngày Du Lịch</p>
+                     <div class="row_1 clearfix">
+             <input class="form-control" placeholder="Type Minimum 3 letters" type="text" id="decrea">
+                     
+                        </div>
+         </div>
+         <div class="col-sm-4 more_2">
+           <div class="col-sm-4 space_left  more_2_inner_1">
+             <p>Loại homestay</p>
+             <select  name="month" class="form-control input-lg" id="loaip">
+            <option *ngFor="let item of category" value={{item.id}}>{{item.tenloai}}</option>
+  
+    </select>
+           </div>
+           <div class="col-sm-4 space_left  more_2_inner_1">
+             <p>Routing</p>
+            <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">Integer</option>
+    <option value="03">Libero</option>
+    <option value="03">Best Libero</option>
+    </select>
+           </div>
+           <div (click)="search()" class="col-sm-4 space_left search_inner"><a>Tìm </a></div>
+         </div>
+      </div>
+     </div>
+    </div>
+    </section>
+    
+    <section id="package">
+    <div class="container">
+    <div class="row">
+    <div class="col-sm-12">
+    <div class="package_1 clarfix">
+    <div class="col-sm-6 package_1_inner">
+    <p><span>50</span> Holiday Tours</p>
+    </div>
+    <div class="col-sm-6 package_1_inner_1 text-right">
+    <p><span> * </span> Nulla quis sem at nibh elementum imperdiet. </p>
+    </div>
+    </div>
+    <div class="trip_detail clearfix">
+    
+    <ul class="nav nav-tabs tab_trip">
+    <li class="active"><a data-toggle="tab" href="#home_1">Tour Package</a></li>
+    <li><a data-toggle="tab" href="#home_2">Holiday Trips</a></li>
+    <li><a data-toggle="tab" href="#home_3">Destination</a></li>
+    <li class="border_none_1"><a data-toggle="tab" href="#home_4">Popular Trips</a></li>
+    </ul>
+    
+    <div class="tab-content clearfix"*ngFor="let item of list_product">
+    <div id="home_1" class="tab-pane fade in active clearfix">
+    <div class="click clearfix" >
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="../../../../assets/homestay/imghomestay/{{item.anh}}" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i></a></h3>
+    <p>Combo 5 ngày</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Phương tiện</span>
+    <span class="deco_1" [routerLink]="['/detail',item.id]" routerLinkActive="router-link-active" ><a><i class="fa fa-hotel"></i>Đặt</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Đồ ăn</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Cảnh đẹp</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dong"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dong"></i>{{item.dongia|currency:'VND'}}</h2>
+    <h5 class="text-right">Một người / Một đêm</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i>Tư vấn</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>{{item.tenPhong}}</span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Homestay</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Vietnam</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div id="home_2" class="tab-pane fade clearfix">
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/35.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">Một người / Một đêm</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i></a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Usa</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/22.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main_1">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu_1 clearfix">
+    <span>Exciting</span>
+    <span>Wildlife</span>
+    <span>Weekdays</span>
+    <span>Past</span>
+    <span>People</span>
+    <span>Monsoon</span>
+    <span>Rough</span>
+    <span>Faring</span>
+    </div>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right enquiry"><a href="#">Book</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-8 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-4 text-right trip_detail_last_3">
+    <h5><span><i class="fa fa-map-marker"></i>From :</span> 
+    <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">America</option>
+    <option value="03">England</option>
+    <option value="03">Australia</option>
+    </select></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/23.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i>Fare Enquiry</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Usa</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/24.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main_1">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu_1 clearfix">
+    <span>Exciting</span>
+    <span>Wildlife</span>
+    <span>Weekdays</span>
+    <span>Past</span>
+    <span>People</span>
+    <span>Monsoon</span>
+    <span>Rough</span>
+    <span>Faring</span>
+    </div>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right enquiry"><a href="#">Book</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-8 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-4 text-right trip_detail_last_3">
+    <h5><span><i class="fa fa-map-marker"></i>From :</span> 
+    <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">America</option>
+    <option value="03">England</option>
+    <option value="03">Australia</option>
+    </select></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/25.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i>Fare Enquiry</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Usa</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/26.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main_1">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu_1 clearfix">
+    <span>Exciting</span>
+    <span>Wildlife</span>
+    <span>Weekdays</span>
+    <span>Past</span>
+    <span>People</span>
+    <span>Monsoon</span>
+    <span>Rough</span>
+    <span>Faring</span>
+    </div>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right enquiry"><a href="#">Book</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-8 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-4 text-right trip_detail_last_3">
+    <h5><span><i class="fa fa-map-marker"></i>From :</span> 
+    <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">America</option>
+    <option value="03">England</option>
+    <option value="03">Australia</option>
+    </select></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/27.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i>Fare Enquiry</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Usa</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/28.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main_1">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu_1 clearfix">
+    <span>Exciting</span>
+    <span>Wildlife</span>
+    <span>Weekdays</span>
+    <span>Past</span>
+    <span>People</span>
+    <span>Monsoon</span>
+    <span>Rough</span>
+    <span>Faring</span>
+    </div>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right enquiry"><a href="#">Book</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-8 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-4 text-right trip_detail_last_3">
+    <h5><span><i class="fa fa-map-marker"></i>From :</span> 
+    <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">America</option>
+    <option value="03">England</option>
+    <option value="03">Australia</option>
+    </select></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/29.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i>Fare Enquiry</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Usa</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/34.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main_1">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu_1 clearfix">
+    <span>Exciting</span>
+    <span>Wildlife</span>
+    <span>Weekdays</span>
+    <span>Past</span>
+    <span>People</span>
+    <span>Monsoon</span>
+    <span>Rough</span>
+    <span>Faring</span>
+    </div>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right enquiry"><a href="#">Book</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-8 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-4 text-right trip_detail_last_3">
+    <h5><span><i class="fa fa-map-marker"></i>From :</span> 
+    <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">America</option>
+    <option value="03">England</option>
+    <option value="03">Australia</option>
+    </select></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div id="home_3" class="tab-pane fade clearfix">
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/34.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i>Fare Enquiry</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Usa</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/23.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main_1">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu_1 clearfix">
+    <span>Exciting</span>
+    <span>Wildlife</span>
+    <span>Weekdays</span>
+    <span>Past</span>
+    <span>People</span>
+    <span>Monsoon</span>
+    <span>Rough</span>
+    <span>Faring</span>
+    </div>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right enquiry"><a href="#">Book</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-8 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-4 text-right trip_detail_last_3">
+    <h5><span><i class="fa fa-map-marker"></i>From :</span> 
+    <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">America</option>
+    <option value="03">England</option>
+    <option value="03">Australia</option>
+    </select></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/22.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i>Fare Enquiry</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Usa</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/25.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main_1">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu_1 clearfix">
+    <span>Exciting</span>
+    <span>Wildlife</span>
+    <span>Weekdays</span>
+    <span>Past</span>
+    <span>People</span>
+    <span>Monsoon</span>
+    <span>Rough</span>
+    <span>Faring</span>
+    </div>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right enquiry"><a href="#">Book</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-8 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-4 text-right trip_detail_last_3">
+    <h5><span><i class="fa fa-map-marker"></i>From :</span> 
+    <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">America</option>
+    <option value="03">England</option>
+    <option value="03">Australia</option>
+    </select></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/24.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i>Fare Enquiry</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Usa</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/27.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main_1">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu_1 clearfix">
+    <span>Exciting</span>
+    <span>Wildlife</span>
+    <span>Weekdays</span>
+    <span>Past</span>
+    <span>People</span>
+    <span>Monsoon</span>
+    <span>Rough</span>
+    <span>Faring</span>
+    </div>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right enquiry"><a href="#">Book</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-8 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-4 text-right trip_detail_last_3">
+    <h5><span><i class="fa fa-map-marker"></i>From :</span> 
+    <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">America</option>
+    <option value="03">England</option>
+    <option value="03">Australia</option>
+    </select></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/26.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i>Fare Enquiry</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Usa</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/29.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main_1">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu_1 clearfix">
+    <span>Exciting</span>
+    <span>Wildlife</span>
+    <span>Weekdays</span>
+    <span>Past</span>
+    <span>People</span>
+    <span>Monsoon</span>
+    <span>Rough</span>
+    <span>Faring</span>
+    </div>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right enquiry"><a href="#">Book</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-8 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-4 text-right trip_detail_last_3">
+    <h5><span><i class="fa fa-map-marker"></i>From :</span> 
+    <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">America</option>
+    <option value="03">England</option>
+    <option value="03">Australia</option>
+    </select></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/28.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i>Fare Enquiry</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Usa</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/34.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main_1">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu_1 clearfix">
+    <span>Exciting</span>
+    <span>Wildlife</span>
+    <span>Weekdays</span>
+    <span>Past</span>
+    <span>People</span>
+    <span>Monsoon</span>
+    <span>Rough</span>
+    <span>Faring</span>
+    </div>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right enquiry"><a href="#">Book</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-8 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-4 text-right trip_detail_last_3">
+    <h5><span><i class="fa fa-map-marker"></i>From :</span> 
+    <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">America</option>
+    <option value="03">England</option>
+    <option value="03">Australia</option>
+    </select></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div id="home_4" class="tab-pane fade clearfix">
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/29.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i>Fare Enquiry</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Usa</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/22.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main_1">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu_1 clearfix">
+    <span>Exciting</span>
+    <span>Wildlife</span>
+    <span>Weekdays</span>
+    <span>Past</span>
+    <span>People</span>
+    <span>Monsoon</span>
+    <span>Rough</span>
+    <span>Faring</span>
+    </div>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right enquiry"><a href="#">Book</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-8 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-4 text-right trip_detail_last_3">
+    <h5><span><i class="fa fa-map-marker"></i>From :</span> 
+    <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">America</option>
+    <option value="03">England</option>
+    <option value="03">Australia</option>
+    </select></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/23.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i>Fare Enquiry</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Usa</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/24.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main_1">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu_1 clearfix">
+    <span>Exciting</span>
+    <span>Wildlife</span>
+    <span>Weekdays</span>
+    <span>Past</span>
+    <span>People</span>
+    <span>Monsoon</span>
+    <span>Rough</span>
+    <span>Faring</span>
+    </div>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right enquiry"><a href="#">Book</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-8 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-4 text-right trip_detail_last_3">
+    <h5><span><i class="fa fa-map-marker"></i>From :</span> 
+    <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">America</option>
+    <option value="03">England</option>
+    <option value="03">Australia</option>
+    </select></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/25.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i>Fare Enquiry</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Usa</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/26.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main_1">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu_1 clearfix">
+    <span>Exciting</span>
+    <span>Wildlife</span>
+    <span>Weekdays</span>
+    <span>Past</span>
+    <span>People</span>
+    <span>Monsoon</span>
+    <span>Rough</span>
+    <span>Faring</span>
+    </div>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right enquiry"><a href="#">Book</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-8 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-4 text-right trip_detail_last_3">
+    <h5><span><i class="fa fa-map-marker"></i>From :</span> 
+    <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">America</option>
+    <option value="03">England</option>
+    <option value="03">Australia</option>
+    </select></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/27.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i>Fare Enquiry</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Usa</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/28.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main_1">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu_1 clearfix">
+    <span>Exciting</span>
+    <span>Wildlife</span>
+    <span>Weekdays</span>
+    <span>Past</span>
+    <span>People</span>
+    <span>Monsoon</span>
+    <span>Rough</span>
+    <span>Faring</span>
+    </div>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right enquiry"><a href="#">Book</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-8 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-4 text-right trip_detail_last_3">
+    <h5><span><i class="fa fa-map-marker"></i>From :</span> 
+    <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">America</option>
+    <option value="03">England</option>
+    <option value="03">Australia</option>
+    </select></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/29.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right"><a href="#"><i class="fa fa-envelope"></i>Fare Enquiry</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-10 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-2 text-right trip_detail_last_2">
+    <h5><i class="fa fa-map-marker"></i>From :<span> Usa</span></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    <div class="click clearfix">
+    <div class="col-sm-3 trip_detail_left_main">
+    <div class="trip_detail_main clearfix">
+    <div class="trip_detail_image"><a href="#"><img src="img/35.jpg" width="100%" height="237px"></a></div>
+    <div class="trip_detail_text">
+    <a href="#"><i class="fa fa-umbrella"></i> Packages View</a>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-9 trip_detail_right_main_1">
+    <div class="trip_detail_right clearfix">
+    <div class="col-sm-9 clearfix trip_detail_right_inner">
+    <h3><a href="#"><i class="fa fa-umbrella"></i>Lorem ipsum dolor sit amet, consectetur adipiscing</a></h3>
+    <p>5 Days pune</p>
+    <div class="trip_menu_1 clearfix">
+    <span>Exciting</span>
+    <span>Wildlife</span>
+    <span>Weekdays</span>
+    <span>Past</span>
+    <span>People</span>
+    <span>Monsoon</span>
+    <span>Rough</span>
+    <span>Faring</span>
+    </div>
+    <div class="trip_menu clearfix">
+    <span><i class="fa fa-plane"></i>Travels</span>
+    <span class="deco_1"><a href="#"><i class="fa fa-hotel"></i>Stays</a></span>
+    <span class="deco_1"><a href="#"><i class="fa fa-spoon"></i>Foods</a></span>
+    <span><i class="fa fa-car"></i>Touring</span>
+    <span class="border_none_1"><i class="fa fa-eye"></i>Viewsight</span>
+    </div>
+    </div>
+    <div class="col-sm-3 clearfix trip_detail_right_inner_1">
+    <p class="text-right"><i class="fa fa-times-circle-o"></i> 5N / 5D</p>
+    <h6 class="text-right"> <i class="fa fa-dollar"></i>3,999</h6>
+    <h2 class="text-right"> <i class="fa fa-dollar"></i>3,333</h2>
+    <h5 class="text-right">One person / One Thing</h5>
+    <h4 class="text-right enquiry"><a href="#">Book</a></h4>
+    </div>
+    </div>
+    <div class="trip_detail_last clearfix">
+    <div class="col-sm-8 trip_detail_last_1">
+    <span class="span_text"><i class="fa fa-hotel"></i>Nulla quis Sem At Nibh </span>
+    <span class="span_star">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    <i class="fa fa-star-o"></i>
+    </span> 
+    <span class="span_tag"><a href="#">Stay Hotel</a></span> 
+    </div>
+    <div class="col-sm-4 text-right trip_detail_last_3">
+    <h5><span><i class="fa fa-map-marker"></i>From :</span> 
+    <select name="month" class="form-control input-lg">
+    <option value="01">All</option>
+    <option value="02">America</option>
+    <option value="03">England</option>
+    <option value="03">Australia</option>
+    </select></h5>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>

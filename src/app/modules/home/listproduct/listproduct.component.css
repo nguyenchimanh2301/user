@@ -1,0 +1,29 @@
+.filter-cate>li:hover{
+   background-color: rgb(214, 214, 245);
+   border-radius: 5px;
+}
+li:active{
+    background-color: rgb(49, 49, 209);
+}
+
+#searchs{
+    border: none;
+    margin-bottom: 5px;
+    background-color: aliceblue;
+    height: 40px;
+    border-radius:5px;
+}
+
+#filer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+select{
+    border: none;
+    outline: none;
+}
+select:hover{
+    border: 1px solid;
+}

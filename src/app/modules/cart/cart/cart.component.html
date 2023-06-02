@@ -1,0 +1,101 @@
+
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="assets/img/breadcrumb.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Shopping Cart</h2>
+                        <div class="breadcrumb__option">
+                            <a href="./index.html">Home</a>
+                            <span>Shopping Cart</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Shoping Cart Section Begin -->
+    <section class="shoping-cart spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="shoping__product">Danh sách sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Số Lượng</th>
+                                    <th>Tổng Giá</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of list_cart"> 
+                                    <td class="shoping__cart__item">
+                                        <img src="assets/sanpham/{{item.image}}" alt="" style="height: 50px; width: 50px;">
+                                        <h5>{{item.name}}</h5>
+                                    </td>
+                                    <td class="shoping__cart__price">
+                                       {{item.unit_price|currency:"VND"}}
+                                    </td>
+                                    <td class="shoping__cart__quantity">
+                                        <div class="quantity" id="quantity">
+                                            <div (click)="Giam(item.id)"><i class="fa fa-minus" ></i></div>
+                                            <div class="pro-qty">
+                                                <input type="number" value="{{item.quantity}}" (change)="updatec()">
+                                            </div>
+                                            <div (click)="incre(item)"><i class="fa fa-plus"></i></div>
+                                        </div>
+                                    </td>
+                                    <td class="shoping__cart__total">
+                                        {{item.quantity*item.unit_price|currency:"VND"}}
+                                    </td>
+                                    <td class="shoping__cart__item__close">
+                                        <span class="icon_close" (click)="Xoa(item.id)"></span>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="shoping__cart__btns">
+                        <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                        <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                            Cập Nhật Giỏ Hàng</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="shoping__continue">
+                        <div class="shoping__discount">
+                            <h5>Discount Codes</h5>
+                            <form action="#">
+                                <input type="text" placeholder="Enter your coupon code">
+                                <button type="submit" class="site-btn">APPLY COUPON</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="shoping__checkout">
+                        <h5>Tổng giỏ hàng</h5>
+                        <ul>
+                            <li>Tổng <span>{{total|currency:"VND"}}</span></li>
+                        </ul>
+                        <a  class="primary-btn" (click)="checkout()">ĐẾN TRANG THANH TOÁN</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Shoping Cart Section End -->
+
+ 
