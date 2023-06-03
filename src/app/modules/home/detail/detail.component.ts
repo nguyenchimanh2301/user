@@ -4,7 +4,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/service/cartservice';
 import { environment } from 'src/environments/environment';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 @Component({
   selector: 'app-detail',
@@ -19,12 +19,13 @@ export class DetailComponent implements OnInit , OnDestroy {
   public host = environment.BASE_API;
   listProduct:any;
   Product:any;
+    add_succes = true;
   popup:any = true;
   public frmCustomer!: FormGroup ;
   public list_items:any;                                                                     
   public total:number=0;
   public url = environment.BASE_API;
-  constructor(private http:HttpClient,private router:Router,private activatedRoute: ActivatedRoute,private cart:CartService) { }
+  constructor(private fb:FormBuilder,private http:HttpClient,private router:Router,private activatedRoute: ActivatedRoute,private cart:CartService) { }
   
   ngOnInit(): void {
    this.subscription = this.activatedRoute.params.subscribe(params =>{
@@ -78,6 +79,17 @@ export class DetailComponent implements OnInit , OnDestroy {
   }
   showpopup():void{
     this.popup=false;
+    this.frmCustomer = this.fb.group({
+      txt_name   : [''],
+      txt_sdt:         [''],
+      txt_email: [''],
+      txt_address: [''],
+
+      // txt_mota:    [''],
+      // txt_soluong: [''],
+      // txt_donvi:   [''],
+
+    });
   }
 
 get hoten() {
@@ -160,8 +172,7 @@ console.log(numberOfDays);
       console.log(obj);
       this.http.post('https://localhost:44310/checkout',obj).subscribe(res => {
         alert("Đặt phòng thành công");
-        localStorage.removeItem('cart');
-        this.total =0;
+        this.popup =true;
         // this.list_items = JSON.parse(localStorage.getItem('cart') || '[]');
       });
     }
