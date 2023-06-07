@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-infomation',
@@ -9,8 +11,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class InformationComponent implements OnInit {
   formTT!:FormGroup
   infomation:any;
+  cus:any;
   name:any;
-  constructor(private fb:FormBuilder) { 
+  host = environment.BASE_API;
+  constructor(private fb:FormBuilder,private http:HttpClient) { 
    
 
   }
@@ -23,16 +27,18 @@ export class InformationComponent implements OnInit {
       'txt_address': new FormControl('', [Validators.required]),
       'txt_ghichu': new FormControl('')
     });
-  this.infomation = JSON.parse(localStorage.getItem('user')|| '{}');
-
+    this.infomation = JSON.parse(localStorage.getItem('user')|| '{}');
+    this.http.get(this.host+'/get_cus_by_id?id='+Number(this.infomation.maNguoiDung)).subscribe(x=>{
+    this.cus = x;
+    console.log(this.cus);
     this.formTT = this.fb.group({
-      ten_kh:   [this.infomation.hoTen],
-      email:         [  this.infomation.email],
-      txt_sdt:         [  this.infomation.dienThoai],
-      txt_address:         [  this.infomation.diaChi],
-
+      ten_kh:   [this.cus.tenKh],
+      email:         [  this.cus.email],
+      txt_sdt:         [  this.cus.sdt],
+      txt_address:         [  this.cus.diaChi],
     });
-  }
+  });
+}
   get tenkh() {
     return this.formTT.get('ten_kh')!;
   }
@@ -48,7 +54,27 @@ export class InformationComponent implements OnInit {
   get diachi() {
     return this.formTT.get('txt_address')!;
   }
-  onSubmit(val:any):void{
+  onSubmit(val: any): void {
+    let obj = {
+      "id": Number(this.infomation.maNguoiDung),
+      "tenKh": val.ten_kh,
+      "email": val.email,
+      "diaChi": val.txt_address,
+      "sdt": val.txt_sdt,
+      "note": ""
+    };
+  
+    
+      if (confirm("Bạn có chắc muốn cập nhật lại thông tin" )) {
+        this.http.put(this.host + "/update_kh", obj).subscribe(x => {
+        alert("Cập nhật thành công");
+        window.location.reload();
+      });
+      } 
+      else {
 
+        
+      }
+  
   }
 }
