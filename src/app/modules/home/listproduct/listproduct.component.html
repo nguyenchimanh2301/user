@@ -13,21 +13,22 @@
            </div>
          </div>
          <div class="col-sm-3  journey">
-                 <p>Ngày Du Lịch</p>
+                 <p>Giá tối đa</p>
                      <div class="row_1 clearfix">
-             <input class="form-control" placeholder="Type Minimum 3 letters" type="text" id="decrea">
+             <input class="form-control" placeholder="Type Minimum 3 letters" type="text" value="0" id="gia">
                      
                         </div>
          </div>
          <div class="col-sm-4 more_2">
            <div class="col-sm-4 space_left  more_2_inner_1">
              <p>Loại homestay</p>
-             <select  name="month" class="form-control input-lg" id="loaip">
-            <option *ngFor="let item of category" value={{item.id}}>{{item.tenloai}}</option>
+             <select name="month" class="form-control input-lg" id="loaip">
+              <option  value="">Tất cả</option>
+              <option *ngFor="let item of category"  value={{item.id}}>{{item.tenloai}}</option>
   
     </select>
            </div>
-           <div class="col-sm-4 space_left  more_2_inner_1">
+           <!-- <div class="col-sm-4 space_left  more_2_inner_1">
              <p>Routing</p>
             <select name="month" class="form-control input-lg">
     <option value="01">All</option>
@@ -35,7 +36,7 @@
     <option value="03">Libero</option>
     <option value="03">Best Libero</option>
     </select>
-           </div>
+           </div> -->
            <div (click)="search()" class="col-sm-4 space_left search_inner"><a>Tìm </a></div>
          </div>
       </div>

@@ -9,6 +9,7 @@ import { DetailComponent } from './home/detail/detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewsComponent } from './home/news/news.component';
 import { LoginComponent } from './login/login.component';
+import { InformationComponent } from './home/infomation/information.component';
 
 export const MainRoutes: Routes = [
   
@@ -19,6 +20,7 @@ export const MainRoutes: Routes = [
       { path: 'list_product', component:ListproductComponent },
       { path: 'detail/:id', component:DetailComponent },
       { path: 'news', component:NewsComponent },
+      { path: 'info', component:InformationComponent },
 
     // children: [
     //   { path: 'homes', loadChildren: () => import('./home/home.module').then(m => m.HomeModule)},
@@ -30,6 +32,7 @@ export const MainRoutes: Routes = [
   declarations: [
     DetailComponent,
     NewsComponent,
+    InformationComponent
   ],
   imports: [
     CommonModule,

@@ -65,11 +65,12 @@ export class ListproductComponent implements OnInit {
   }
   search(){
     let name = (<HTMLInputElement>document.getElementById('name')).value;
+    let gia = (<HTMLInputElement>document.getElementById('gia')).value;
     // let addr = (<HTMLInputElement>document.getElementById('address')).value;
     let loaip = (<HTMLInputElement>document.getElementById('loaip')).value;
     console.log(loaip);
     try{
-      this.http.get(this.host+'/Search_Homstay?='+name+'&idloai='+loaip).subscribe(data=>{
+      this.http.get(this.host+'/Search_Homstay?name='+name+'&idloai='+loaip+'&gia='+Number(gia)).subscribe(data=>{
         this.list_product = data;
       });
     }

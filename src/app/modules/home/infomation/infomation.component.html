@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thông tin khách hàng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+        
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        .customer-image {
+            display: block;
+            margin: 0 auto;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .customer-info {
+            margin-top: 20px;
+        }
+    </style>
+    </head>>
+    <body>
+        
+    <div class="container">
+        <h1>Thông tin khách hàng</h1>
+        
+        <img class="customer-image" src="path_to_image.jpg" alt="Ảnh đại diện">
+        <div class="customer-info">
+        <form [formGroup]="formTT" (ngSubmit)="onSubmit(formTT.value)">
+            <div class="form-group" >
+                <label for="name">Họ và tên:</label>
+                <input type="text" class="form-control" id="name" name="name" value="" formControlName="ten_kh" >
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required formControlName="email">
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Số điện thoại:</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required formControlName="txt_sdt">
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Địa chỉ:</label>
+                <textarea class="form-control" id="address" name="address" required formControlName="txt_address"></textarea >
+            </div>
+    </form>
+    </div>
+</div>
+
+</body>
+<html>
