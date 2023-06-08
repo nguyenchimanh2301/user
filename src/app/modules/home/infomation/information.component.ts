@@ -14,12 +14,25 @@ export class InformationComponent implements OnInit {
   cus:any;
   name:any;
   host = environment.BASE_API;
+  page:number = 1;
+  count:number = 0;
+  public table_size:number = 2;
+  table_numberSize:any = [1,2,3];
+  size:any = 2;
+  active=true;
+  order:any;
+  khach:any;
+  detail_order:any;
+  orderdetail=true;
+  modal = true;
+  total:number = 0;
+  public htmlContent!: string;
   constructor(private fb:FormBuilder,private http:HttpClient) { 
    
 
   }
   ngOnInit(): void {
-  
+  this.gethd();
     this.formTT = new FormGroup({
       'ten_kh': new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
       'txt_sdt': new FormControl('', [Validators.required, Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
@@ -63,8 +76,6 @@ export class InformationComponent implements OnInit {
       "sdt": val.txt_sdt,
       "note": ""
     };
-  
-    
       if (confirm("Bạn có chắc muốn cập nhật lại thông tin" )) {
         this.http.put(this.host + "/update_kh", obj).subscribe(x => {
         alert("Cập nhật thành công");
@@ -76,5 +87,22 @@ export class InformationComponent implements OnInit {
         
       }
   
+  }
+  sizeChange(event:any):void{
+    this.table_size = event.target.value; 
+    this.page = 1;
+  }
+  dataChange(event:any):void{
+    this.page = event;
+  }
+  gethd(){
+    this.infomation = JSON.parse(localStorage.getItem('user')|| '{}');
+    this.http.get(this.host + "/get_donhan_khachhang?id="+Number(this.infomation.maNguoiDung)).subscribe(x => {
+      this.order = x;
+      console.log(x);
+  })
+  }
+  show(val:any){
+
   }
 }

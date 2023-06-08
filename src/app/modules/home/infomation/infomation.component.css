@@ -1,0 +1,41 @@
+.invoice {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.invoice h2 {
+    text-align: center;
+}
+
+.invoice p {
+    margin-bottom: 10px;
+}
+
+.invoice table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.invoice th, .invoice td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+
+/* CSS cho khung chi tiết khách hàng */
+.customer {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 500px;
+    margin: 20px auto;
+}
+
+.customer h2 {
+    text-align: center;
+}
+
+.customer p {
+    margin-bottom: 10px;
+}

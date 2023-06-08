@@ -240,7 +240,7 @@
 	   <div class="menu_2_inner">
 					  <p>There are no reviews yet.</p>
 					  <p>Be the first to review “Sports Bra”<br>
-Your email address will not be published. Required fields are marked *</p>
+                       Your email address will not be published. Required fields are marked *</p>
                       <span>
 					   <i class="fa fa-star-o"></i>
 					   <i class="fa fa-star-o"></i>
@@ -323,7 +323,7 @@ Your email address will not be published. Required fields are marked *</p>
 									<span *ngIf="email.errors?.['email']">Không đúng định dạng của email</span>
 								</span> 
 							</p>
-							  <input type="text" formControlName="txt_email" ngModel>
+							  <input type="text" formControlName="txt_email" value="">
 							</div>
 						  </div>
 					</div>
@@ -382,9 +382,9 @@ Your email address will not be published. Required fields are marked *</p>
 						Total <span>{{ total | currency : "VND" }}</span>
 					  </div> -->
 					  <div class="checkout__input__checkbox">
-						<select name="" id="thanhtoan">
-							<option value=true>Thanh toán onine</option>
-							<option value=false>Thanh toán tại quầy</option>
+						<select name="" id="thanhtoan" [(ngModel)]="selectedPaymentMethod">
+							<option value="true">Thanh toán onine</option>
+							<option value="false">Thanh toán tại quầy</option>
 						</select>
 					  </div>
 					  <button type="submit" class="btn btn-success">ĐẶT PHÒNG</button>
@@ -441,13 +441,32 @@ Your email address will not be published. Required fields are marked *</p>
 			 
 		  </div>
 		  <div class="col-sm-12 routes_bottom">
-		   <p> * According to Our Term and Condition</p>
 		  </div>
 		</div>
 	  </div>
 	</div>
 
-	
+	<div id="layout" [hidden]="logins">
+		<div id="formlogin" >
+			<h3>ĐĂNG NHẬP</h3>
+			<button (click)="closelogin()" id="close">X</button>
+			<div id="formsm">
+				<form class="signin-form" [formGroup]="frmLogin" (ngSubmit)="login(frmLogin.value)">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Username" required formControlName="txt_user" ngModel>
+					</div>
+			   <div class="form-group">
+				<input id="password-field" type="password" class="form-control" placeholder="Password" required formControlName="txt_password" ngModel>
+			   </div>
+				 <div class="form-group" style="width: 60px;">
+				  <button type="submit" class="form-control btn btn-primary submit col-sm-3">Sign In</button>
+				 </div>
+			
+			</form>
+			</div>
+		</div>
+	</div>
+
 
 	
 

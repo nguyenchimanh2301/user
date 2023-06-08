@@ -1,11 +1,12 @@
 import { Component, OnInit ,OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Router, ActivatedRoute, Params} from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, first } from 'rxjs';
 import { CartService } from 'src/app/service/cartservice';
 import { environment } from 'src/environments/environment';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
+import { AuthenticationService } from 'src/app/core/authentication/authentication.service';
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
@@ -18,6 +19,10 @@ export class DetailComponent implements OnInit , OnDestroy {
   public subscription!: Subscription;
   public host = environment.BASE_API;
   listProduct:any;
+  infomation:any;
+  cus:any;
+  public logins = true;
+  selectedPaymentMethod: boolean | null = null;
   Product:any;
     add_succes = true;
   popup:any = true;
@@ -25,28 +30,65 @@ export class DetailComponent implements OnInit , OnDestroy {
   public list_items:any;                                                                     
   public total:number=0;
   public url = environment.BASE_API;
-  constructor(private fb:FormBuilder,private http:HttpClient,private router:Router,private activatedRoute: ActivatedRoute,private cart:CartService) { }
-  
+  public frmLogin!:FormGroup;
+  public submitted = false;
+  public loading = false;
+  public returnUrl!:string;
+  public error = '';
+ 
+  constructor(private  route:ActivatedRoute,private auService:AuthenticationService,private fb:FormBuilder,private http:HttpClient,private router:Router,private activatedRoute: ActivatedRoute,private cart:CartService) {
+   
+   }
   ngOnInit(): void {
    this.subscription = this.activatedRoute.params.subscribe(params =>{
     this.id = params['id'];
     console.log(this.id);
-
+    this.infomation = JSON.parse(localStorage.getItem('user')|| 'null');
+    console.log(this.infomation);
     this.http.get<any>(this.host+'/get_all_homestay').subscribe(data => {
       this.Product = data;
     })
+    this.frmLogin = new FormGroup({
+      'txt_user': new FormControl('', [Validators.required]),
+      'txt_password': new FormControl('', [Validators.required]),
+    });
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   })
-  this.load();
   this.loadsp();
 
+
+}
+ngOnDestroy(): void {
+  this.subscription.unsubscribe();
+}
+
+get taikhoan() {
+  return this.frmLogin.get('txt_user')!;
+}
+get matkhau() {
+  return this.frmLogin.get('txt_password')!;
+}
+public login(value:any){
+  this.submitted = true;
+  if(this.frmLogin.invalid){
+       return;
+  }
+  this.loading = true;
+  this.auService.login(value.txt_user,value.txt_password)
+  .pipe(first()).subscribe(
+    (data)=>{
+      alert("Đăng nhập thành công")
+      this.router.navigate(['/index']);
+    },
+    (error)=>{
+      this.error = error;
+      this.loading = false;
+      alert("Sai tên tài khoản hoặc mật khẩu");
+    }
+  );
 }
 
 
-
-
-  ngOnDestroy(): void {
-      this.subscription.unsubscribe();
-  }
   addCart(item:any): void {
     this.cart.addToCart(item);
     alert('Đã thêm vào yêu thích');
@@ -54,14 +96,14 @@ export class DetailComponent implements OnInit , OnDestroy {
   remove(){
     localStorage.removeItem('id');
   }
-  load(){
-    let id_lsp:any = JSON.parse(localStorage.getItem('cart') || '{}');
-    console.log(id_lsp);
-    this.http.get('https://localhost:44310/get_cung_loai?id_lsp='+id_lsp.id_loai_sp).subscribe(data => {
-      this.listProduct = data;
-      console.log(this.listProduct);
-    })
-  }
+  // load(){
+  //   let id_lsp:any = JSON.parse(localStorage.getItem('cart') || '{}');
+  //   console.log(id_lsp);
+  //   this.http.get('https://localhost:44310/get_cung_loai?id_lsp='+id_lsp.id_loai_sp).subscribe(data => {
+  //     this.listProduct = data;
+  //     console.log(this.listProduct);
+  //   })
+  // }
   loadsp(){
     this.http.get(this.host+'/getht_by_id?id='+this.id).subscribe(res=>{
       this.product_Detail = res;
@@ -78,18 +120,42 @@ export class DetailComponent implements OnInit , OnDestroy {
   
   }
   showpopup():void{
+    this.infomation = JSON.parse(localStorage.getItem('user')|| 'null');
+    if(this.infomation==null){
+      if(confirm("Hiện tại chưa có thông tin Bạn có có đăng muốn đăng nhập không ?")){
+        this.logins= false;
+      }
+      else{
+      this.popup=false;
+        
+        this.frmCustomer = this.fb.group({
+          txt_name   : [''],
+          txt_sdt:         [''],
+          txt_email: [''],
+          txt_address: [''],
+    
+          // txt_mota:    [''],
+          // txt_soluong: [''],
+          // txt_donvi:   [''],
+    
+        });
+      }
+     }else{
     this.popup=false;
-    this.frmCustomer = this.fb.group({
-      txt_name   : [''],
-      txt_sdt:         [''],
-      txt_email: [''],
-      txt_address: [''],
 
-      // txt_mota:    [''],
-      // txt_soluong: [''],
-      // txt_donvi:   [''],
-
+      this.http.get(this.host+'/get_cus_by_id?id='+Number(this.infomation.maNguoiDung)).subscribe(x=>{
+        this.cus=x;
+      console.log(this.cus);
+      this.frmCustomer = this.fb.group({
+        txt_name:   [this.cus.tenKh],
+        txt_email:  [  this.cus.email],
+        txt_sdt:      [  this.cus.sdt],
+        txt_address:  [  this.cus.diaChi],
+      });
     });
+    }
+   
+   
   }
 
 get hoten() {
@@ -118,6 +184,48 @@ const duration = moment.duration(formattedDate2.diff(formattedDate));
 const numberOfDays = duration.asDays();
 console.log(numberOfDays);
   let obj: any = {}
+  let obj2 : any = {}
+  {
+    obj2.donhang ={
+      "idp": this.product_Detail.id,
+      "tongthoigiandat": numberOfDays,
+      "dongia": this.product_Detail.gia,
+      "thanhtien": 0,
+      "idpNavigation": {
+        "id": 0,
+        "tenPhong": "string",
+        "idloaiPhong": 0,
+        "dongia": numberOfDays,
+        "anh": "string",
+        "trangthai": true,
+        "ngayThem": "2023-05-31T09:07:25.298Z",
+        "nguoiTao": "string",
+        "ngayCapNhat": "2023-05-31T09:07:25.298Z",
+        "nguoiCapNhat": "string",
+        "idloaiPhongNavigation": {
+          "id": 0,
+          "tenLoaiPhong": "string",
+          "ngayTao": "2023-05-31T09:07:25.298Z",
+          "nguoiTao": "string",
+          "ngayCapNhat": "2023-05-31T09:07:25.298Z",
+          "nguoiCapNhat": "string"
+        }
+      }
+    },
+    obj2.datphong= {
+      "idkh": Number(this.infomation.maNguoiDung),
+      "tenkh": "string",
+      "ngaydat": formattedDate,
+      "ngaytra": formattedDate2,
+      "thanhtien": String(this.product_Detail.gia * numberOfDays),
+      "thanhtoan": this.selectedPaymentMethod,
+      "idkhNavigation": {  "tenKh": "string",
+      "email": "string",
+      "diaChi": "string",
+      "sdt": "string",
+      "note": "string"}
+    }
+  }
     obj.kh={
       "tenKh": val.txt_name,
       "email": val.txt_email,
@@ -164,11 +272,10 @@ console.log(numberOfDays);
       "sdt": "string",
       "note": "string"}
     }
-    if(this.hoten==null)
+    this.infomation = JSON.parse(localStorage.getItem('user')|| '{}');
+
+    if(this.infomation==null)
     {
-       alert("Hãy nhập đủ thông tin");
-    }
-    else{
       console.log(obj);
       this.http.post('https://localhost:44310/checkout',obj).subscribe(res => {
         alert("Đặt phòng thành công");
@@ -176,6 +283,16 @@ console.log(numberOfDays);
         // this.list_items = JSON.parse(localStorage.getItem('cart') || '[]');
       });
     }
+    else{
+      this.http.post('https://localhost:44310/checkout_cokh',obj2).subscribe(res => {
+        console.log(obj2);
+        alert("Đặt phòng thành công");
+        this.popup =true;
+        // this.list_items = JSON.parse(localStorage.getItem('cart') || '[]');
+      });
+    }
+}
+closelogin(){
+  this.logins= true;
 }
 }
-

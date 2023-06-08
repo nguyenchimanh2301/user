@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewsComponent } from './home/news/news.component';
 import { LoginComponent } from './login/login.component';
 import { InformationComponent } from './home/infomation/information.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 export const MainRoutes: Routes = [
   
@@ -38,7 +39,8 @@ export const MainRoutes: Routes = [
     CommonModule,
     RouterModule.forChild(MainRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 
