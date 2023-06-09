@@ -24,7 +24,7 @@ export class DetailComponent implements OnInit , OnDestroy {
   public logins = true;
   selectedPaymentMethod: boolean | null = null;
   Product:any;
-    add_succes = true;
+  add_succes = true;
   popup:any = true;
   public frmCustomer!: FormGroup ;
   public list_items:any;                                                                     
@@ -96,14 +96,7 @@ public login(value:any){
   remove(){
     localStorage.removeItem('id');
   }
-  // load(){
-  //   let id_lsp:any = JSON.parse(localStorage.getItem('cart') || '{}');
-  //   console.log(id_lsp);
-  //   this.http.get('https://localhost:44310/get_cung_loai?id_lsp='+id_lsp.id_loai_sp).subscribe(data => {
-  //     this.listProduct = data;
-  //     console.log(this.listProduct);
-  //   })
-  // }
+
   loadsp(){
     this.http.get(this.host+'/getht_by_id?id='+this.id).subscribe(res=>{
       this.product_Detail = res;
@@ -134,9 +127,6 @@ public login(value:any){
           txt_email: [''],
           txt_address: [''],
     
-          // txt_mota:    [''],
-          // txt_soluong: [''],
-          // txt_donvi:   [''],
     
         });
       }
@@ -278,7 +268,8 @@ console.log(numberOfDays);
     {
       console.log(obj);
       this.http.post('https://localhost:44310/checkout',obj).subscribe(res => {
-        alert("Đặt phòng thành công");
+        this.add_succes = false;
+        setTimeout(()=>{this.add_succes=true;},2000);
         this.popup =true;
         // this.list_items = JSON.parse(localStorage.getItem('cart') || '[]');
       });
@@ -286,7 +277,8 @@ console.log(numberOfDays);
     else{
       this.http.post('https://localhost:44310/checkout_cokh',obj2).subscribe(res => {
         console.log(obj2);
-        alert("Đặt phòng thành công");
+        this.add_succes = false;
+        setTimeout(()=>{this.add_succes=true;},2000);
         this.popup =true;
         // this.list_items = JSON.parse(localStorage.getItem('cart') || '[]');
       });

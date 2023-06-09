@@ -11,6 +11,7 @@ import { AuthenticationService } from 'src/app/core/authentication/authenticatio
 export class LoginComponent implements OnInit {
   public frmLogin!:FormGroup;
   public submitted = false;
+  add_succes = true;
   public loading = false;
   public returnUrl!:string;
   public error = '';
@@ -42,8 +43,11 @@ export class LoginComponent implements OnInit {
     this.auService.login(value.txt_user,value.txt_password)
     .pipe(first()).subscribe(
       (data)=>{
-        alert("Đăng nhập thành công")
-        this.router.navigate(['/index']);
+        this.add_succes = false;
+        setTimeout(()=>{this.add_succes=true;},2000);
+        setTimeout(()=>{this.router.navigate(['/index']);
+       },2000);
+
       },
       (error)=>{
         this.error = error;
