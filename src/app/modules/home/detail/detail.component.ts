@@ -37,12 +37,13 @@ export class DetailComponent implements OnInit , OnDestroy {
   public error = '';
  
   constructor(private  route:ActivatedRoute,private auService:AuthenticationService,private fb:FormBuilder,private http:HttpClient,private router:Router,private activatedRoute: ActivatedRoute,private cart:CartService) {
-   
    }
   ngOnInit(): void {
+    this.logins = true;
    this.subscription = this.activatedRoute.params.subscribe(params =>{
     this.id = params['id'];
     console.log(this.id);
+  })
     this.infomation = JSON.parse(localStorage.getItem('user')|| 'null');
     console.log(this.infomation);
     this.http.get<any>(this.host+'/get_all_homestay').subscribe(data => {
@@ -53,7 +54,6 @@ export class DetailComponent implements OnInit , OnDestroy {
       'txt_password': new FormControl('', [Validators.required]),
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-  })
   this.loadsp();
 
 
@@ -61,7 +61,6 @@ export class DetailComponent implements OnInit , OnDestroy {
 ngOnDestroy(): void {
   this.subscription.unsubscribe();
 }
-
 get taikhoan() {
   return this.frmLogin.get('txt_user')!;
 }
@@ -87,8 +86,6 @@ public login(value:any){
     }
   );
 }
-
-
   addCart(item:any): void {
     this.cart.addToCart(item);
     alert('Đã thêm vào yêu thích');
@@ -96,7 +93,6 @@ public login(value:any){
   remove(){
     localStorage.removeItem('id');
   }
-
   loadsp(){
     this.http.get(this.host+'/getht_by_id?id='+this.id).subscribe(res=>{
       this.product_Detail = res;
@@ -120,14 +116,11 @@ public login(value:any){
       }
       else{
       this.popup=false;
-        
         this.frmCustomer = this.fb.group({
           txt_name   : [''],
           txt_sdt:         [''],
           txt_email: [''],
           txt_address: [''],
-    
-    
         });
       }
      }else{
@@ -144,8 +137,6 @@ public login(value:any){
       });
     });
     }
-   
-   
   }
 
 get hoten() {
@@ -165,7 +156,6 @@ public close():void{
 }
 public onSubmit(val: any) {
 const thanhtoan: string = (document.getElementById("thanhtoan") as HTMLInputElement).value; 
-
 const inputDate: string = (document.getElementById("checkin") as HTMLInputElement).value; 
 const inputDate2: string = (document.getElementById("checkout") as HTMLInputElement).value; // Thay "myDateInput" bằng ID của trường ngày
 const formattedDate = moment(inputDate, "YYYY-MM-DD");

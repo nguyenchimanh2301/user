@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { SharedComponent } from 'src/app/shared/shared.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InfoComponent } from './info/info.component';
 // export const MainRoutes: Routes = [
 //   {
 //     path: '', component: IndexComponent,
@@ -20,7 +19,6 @@ import { InfoComponent } from './info/info.component';
 @NgModule({
   declarations: [
     SharedComponent,
-    InfoComponent,
   ],
   imports: [
     CommonModule,

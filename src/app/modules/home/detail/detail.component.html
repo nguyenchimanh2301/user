@@ -16,14 +16,7 @@
 	<p><i class="fa fa-map-marker"></i> From</p>
 	</div>
 	<div class="col-sm-9">
-	<select name="month" class="form-control input-sm">
-	<option value="01">India</option>
-	<option value="02">America</option>
-	<option value="03">Nepal</option>
-	<option value="03">England</option>
-	<option value="04">Holland</option>
-	<option value="05">Thiland</option>
-	</select>
+	<input type="text" class="form-control input-sm" value="{{product_Detail.diaChi}}">
 	</div>
 	</div>
 	<div class="col-sm-4 details_top_inner_2 text-center">
@@ -412,8 +405,10 @@
 	<div class="view">
 	<a (click)="addCart(product_Detail)"><i class="fa fa-star">Yêu thích</i></a>
 	</div>
-	<div class="price">
-	</div>
+		<div class="detail_package_right_2">
+			<p>{{product_Detail.trangthai==true?"ĐÃ CÓ NGƯỜI ĐẶT":"SẴN SÀNG"}}</p>
+	    </div>
+		
 	<div class="price">
 	</div>
 	<div class="price">
@@ -428,7 +423,7 @@
 			 <h2>Homestay cùng loại</h2>
 			 <div class="col-sm-3" *ngFor="let item of Product.slice(0, 4)" >
 			   <div class="routes_inner">
-				<a href="#"><img src="../../../../assets/homestay/imghomestay/{{item.anh}}" width="100%"></a>
+				<a><img src="../../../../assets/homestay/imghomestay/{{item.anh}}" width="217px" height="217px"></a>
 				 <div class="routes_inner_1 clearfix">
 					<!-- <h4>{{item.tenPhong}}</h4> -->
 					<marquee scrollamount="3" style="font-size: 20px; ">{{item.tenPhong}}</marquee>

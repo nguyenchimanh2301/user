@@ -1,1 +1,154 @@
-<p>info works!</p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>publicnews</title>
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/global.css" rel="stylesheet">
+	<link href="css/news-details.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />   -->
+    <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+
+<!-- <section id="news-details_main">
+ <div class="news-details_main_3 clearfix">
+  <div class="container">
+  <div class="row">
+   <div class="news-details_main_1 clearfix">
+    <div class="col-sm-6">
+	 <div class="news-details_main_2">
+	  <h2>NEWS DETAILS</h2>
+	 </div>
+	</div>
+	<div class="col-sm-6">
+	 <div class="news-details_main_2">
+	  <ul>
+	       <li>Home</li>
+		   <li>|</li>
+		   <li>News Details</li>
+	  </ul>
+	 </div>
+	</div>
+   </div>
+  </div>
+ </div>
+ </div>
+</section> -->
+<section id="news_details">
+ <div class="container">
+  <div class="row">
+   <div class="news_details_1 clearfix">
+    <div class="col-sm-8">
+	 <div class="news_details_5 clearfix">
+	  <div class="news_details_2">
+	  <h6>Last Updated: 3rd September, 2020 20:16 IST</h6>
+	  <h3>{{detail_new.tieude}}</h3>
+	     
+	 </div>
+	 <div class="news_details_3">
+	  <div class="col-sm-6 space_all">
+	   <div class="news_details_4">
+	    <h6>Written By <a href="#"> Suchitra Karthikeyan</a></h6>
+	   </div>
+	  </div>
+	  <div class="col-sm-6 space_all">
+	   <div class="news_details_4">
+	    <ul>
+		     <li class="well_5"><a href="#"><i class="fa fa-facebook"></i></a></li>
+			 <li class="well_6"><a href="#"><i class="fa fa-twitter"></i></a></li>
+		</ul>
+	   </div>
+	  </div>
+	 </div>
+	 </div>	
+     <div class="news_details_6">
+	  <a href="#"><img src="../../../../assets/tintuc/{{detail_new.anh}}" alt="abc" class="img_responsive"></a>
+	  <p>{{detail_new.noidung}}</p>
+	 <div class="details_7" id="comments">
+    <div class="box details_7" id="box" *ngFor="let item of binh_luan">
+     <div class="binhluan"><img src="../../../../assets/tintuc/{{detail_new.anh}}"></div>
+     <div class="binhluan">
+        <div id="info">
+            <div class="name_user">{{item.tenKh}}</div>
+            <div class="time">{{item.thoigian}}</div>
+        </div>
+        <div id="word">{{item.binhluan1}}</div>
+     </div>
+     </div>
+     </div>
+	   <div class="details_6" style="margin-top:20px;">
+        <h2>Đăng Bình luận</h2>
+        <p>Hãy là người văn minh,lịch sự*</p>
+      </div>
+      <form [formGroup]="frmBL" (ngSubmit)="post(frmBL.value)">
+	  <div class="details_7">
+	   <label for="comment">Message</label>
+	   <textarea placeholder="" class="form-control" id="comment" formControlName="txt_bl" ngModel></textarea>
+	  </div> 
+      <div class="details_8">
+	   <label for="name">Name *</label>
+	   <input type="text" class="form-control" placeholder="" id="name">
+	  </div>
+      <div class="details_9">
+       <button type="submit" class="button">Submit</button>       
+	  </div>
+    </form>
+	 </div>	 
+	</div>
+	<div class="col-sm-4">
+	 <div class="details_10 clearfix" *ngFor="let item of list_new">
+	  <div class="col-sm-4 space_all">
+	   <div class="details_11">
+	    <a href="#"><img src="../../../../assets/tintuc/{{item.anh}}" alt="abc" class="img_responsive"></a>
+	   </div>
+	  </div>
+	  <div class="col-sm-8 space_all">
+	   <div class="details_12">
+	    <h6>13 hours ago</h6>
+		<p>{{item.tieude}}</p>
+	   </div>
+	  </div>
+	 </div>
+	 
+	 <div class="details_13">
+	  <a href="#"><img src="img/82.jpg" alt="abc" class="img_responsive"></a>
+	 </div>
+	 <div class="details_13">
+	  <a href="#"><img src="img/83.jpg" alt="abc" class="img_responsive"></a>
+	 </div>
+	 <div class="details_13">
+	  <a href="#"><img src="img/84.jpg" alt="abc" class="img_responsive"></a>
+	 </div>
+	</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<script>
+$(document).ready(function(){
+	/*****Fixed Menu******/
+	var secondaryNav = $('.cd-secondary-nav'),
+	   secondaryNavTopPosition = secondaryNav.offset().top;
+		$(window).on('scroll', function(){
+			if($(window).scrollTop() > secondaryNavTopPosition ) {
+				secondaryNav.addClass('is-fixed');	
+			} else {
+				secondaryNav.removeClass('is-fixed');
+			}
+		});	
+});
+</script>
+</body>
+
+	
+	
+	
+	
+

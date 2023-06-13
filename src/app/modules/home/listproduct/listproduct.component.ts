@@ -78,4 +78,10 @@ export class ListproductComponent implements OnInit {
       console.log(err);
     }
   }
+  Search(event:any){
+    let name = (<HTMLInputElement>document.getElementById('addres')).value;
+    this.http.get(this.host+'/Search_Homstay_address?diachi='+event.target.value).subscribe(data=>{
+      this.list_product = data;
+    });
+  }
 }
