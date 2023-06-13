@@ -47,7 +47,7 @@
     <div class="col-sm-8">
 	 <div class="news_details_5 clearfix">
 	  <div class="news_details_2">
-	  <h6>Last Updated: 3rd September, 2020 20:16 IST</h6>
+	  <h6>Cập nhật:{{detail_new.ngaydangbai| date:'HH:mm:ss dd/MM/yyyy' }} </h6>
 	  <h3>{{detail_new.tieude}}</h3>
 	     
 	 </div>
@@ -76,7 +76,7 @@
      <div class="binhluan">
         <div id="info">
             <div class="name_user">{{item.tenKh}}</div>
-            <div class="time">{{item.thoigian}}</div>
+            <div class="time">{{item.thoigian | date:'HH:mm:ss dd/MM/yyyy' }}</div>
         </div>
         <div id="word">{{item.binhluan1}}</div>
      </div>

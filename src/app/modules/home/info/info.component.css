@@ -988,7 +988,7 @@ body{
     #comments{
       border: 1px solid;
       height: 700px;
-      overflow: scroll;
+      overflow-y: scroll;
     
     }#box{
       margin-top: 10px;

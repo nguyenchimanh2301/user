@@ -54,13 +54,15 @@ export class InfoComponent implements OnInit {
     })
   }
   post(value:any){
-    this.currentDate = moment().format('YYYY-MM-DD HH:mm:ss');
+    // this.currentDate = moment().format('YYYY-MM-DD HH:mm:ss');
+    this.currentDate = new Date();
+    const formattedDate = this.currentDate.toISOString();
     let name:any = JSON.parse(localStorage.getItem('user')||'{}');
     let obj:any= {
     "id": 0,
     "idUser": name.maTK,
     "binhluan1": value.txt_bl,
-    "thoigian": this.currentDate,
+    "thoigian": formattedDate,
     "idUserNavigation": {
       "maTaiKhoan": 0,
       "idkh": 0,

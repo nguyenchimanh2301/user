@@ -12,6 +12,8 @@ import { HttpClient } from '@angular/common/http';
 export class RegisterComponent implements OnInit {
   public frmLogin!:FormGroup;
   public submitted = false;
+  public title:any ;
+
   add_succes = true;
   public loading = false;
   public returnUrl!:string;
@@ -68,21 +70,34 @@ export class RegisterComponent implements OnInit {
     }
     console.log(obj);
     this.loading = true;
-    this.http.post("https://localhost:44310/dangki",obj)
-    .subscribe(
+    const password1 = (document.getElementById("password-field") as HTMLInputElement).value;
+    const password2 = (document.getElementById("confirm-password-field") as HTMLInputElement).value;
+    console.log(password1 === password2);
+    if (password1 === password2) {
+      this.http.post("https://localhost:44310/dangki",obj)
+      .subscribe(
       (data)=>{
+            
+        this.title ="ĐĂNG KÍ THÀNH CÔNG"
         this.add_succes = false;
         setTimeout(()=>{this.add_succes=true;},2000);
         setTimeout(()=>{this.router.navigate(['']);
        },2000);
-
       },
       (error)=>{
         this.error = error;
         this.loading = false;
-        alert("Sai tên tài khoản hoặc mật khẩu");
+        this.title ="ĐĂNG KÍ LỖI"
+        this.add_succes = false;
+        setTimeout(()=>{this.add_succes=true;},2000);
       }
     );
+    } else {
+         this.title ="MẬT KHẨU KHÔNG KHỚP"
+        this.add_succes = false;
+        setTimeout(()=>{this.add_succes=true;},2000);
+    }
   }
+  
 
 }

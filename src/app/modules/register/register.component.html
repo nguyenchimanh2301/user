@@ -2,7 +2,7 @@
 <div class="banner-over">
 	<div class="success-msg" [hidden]="add_succes">
 		<i class="fa fa-lock"></i>
-	  Đăng nhập THÀNH CÔNG
+    {{title}}
 	</div>
 	<body class="img js-fullheight" style="background-image: url(./assets/LoginCSS/images/bg.jpg);">
 	<section class="ftco-section">
@@ -24,15 +24,15 @@
 	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 	            </div>
                 <div class="form-group">
-                    <input id="password-field" type="password" class="form-control" placeholder="Nhập lại mật khẩu" required >
+                    <input id="confirm-password-field" type="password" class="form-control" placeholder="Nhập lại mật khẩu" required >
                     <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                   </div>
                   <div class="form-group">
-                    <input id="password-field" type="text" class="form-control" placeholder="Số điện thoại" required  formControlName="sdt">
+                    <input id="" type="text" class="form-control" placeholder="Số điện thoại" required  formControlName="sdt">
                     <span toggle="#password-field" class="toggle-password"></span>
                   </div>
                   <div class="form-group">
-                    <input id="password-field" type="text" class="form-control" placeholder="Email" required  name="" formControlName="email">
+                    <input id="" type="text" class="form-control" placeholder="Email" required  name="" formControlName="email">
                     <span toggle="#password-field" class=" toggle-password"></span>
                   </div>
 	            <div class="form-group">
