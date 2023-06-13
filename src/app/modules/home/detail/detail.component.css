@@ -116,7 +116,7 @@
     left: 40%;
     z-index: 99;
     border-radius: 5px;
-    background-image: url("/assets/homestay/imghomestay/Nui.jpg");
+    /* background-image: url("/assets/homestay/imghomestay/Nui.jpg"); */
     background-size: contain;
   }
   #formlogin h3{

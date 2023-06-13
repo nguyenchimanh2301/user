@@ -73,29 +73,34 @@ export class RegisterComponent implements OnInit {
     const password1 = (document.getElementById("password-field") as HTMLInputElement).value;
     const password2 = (document.getElementById("confirm-password-field") as HTMLInputElement).value;
     console.log(password1 === password2);
-    if (password1 === password2) {
-      this.http.post("https://localhost:44310/dangki",obj)
-      .subscribe(
-      (data)=>{
-            
-        this.title ="ĐĂNG KÍ THÀNH CÔNG"
-        this.add_succes = false;
-        setTimeout(()=>{this.add_succes=true;},2000);
-        setTimeout(()=>{this.router.navigate(['']);
-       },2000);
-      },
-      (error)=>{
-        this.error = error;
-        this.loading = false;
-        this.title ="ĐĂNG KÍ LỖI"
-        this.add_succes = false;
-        setTimeout(()=>{this.add_succes=true;},2000);
-      }
-    );
+    if(value.txt_user.length <1 || value.length <1  == null || value.email.length <1 || value.sdt.length !=10) {
+     alert("Các trường không được để trống và không quá ngắn");
     } else {
-         this.title ="MẬT KHẨU KHÔNG KHỚP"
-        this.add_succes = false;
-        setTimeout(()=>{this.add_succes=true;},2000);
+      if (password1 === password2) {
+        this.http.post("https://localhost:44310/dangki",obj)
+        .subscribe(
+        (data)=>{
+              
+          this.title ="ĐĂNG KÍ THÀNH CÔNG"
+          this.add_succes = false;
+          setTimeout(()=>{this.add_succes=true;},2000);
+          setTimeout(()=>{this.router.navigate(['']);
+         },2000);
+        },
+        (error)=>{
+          this.error = error;
+          this.loading = false;
+          this.title ="ĐĂNG KÍ LỖI"
+          this.add_succes = false;
+          setTimeout(()=>{this.add_succes=true;},2000);
+        }
+      );
+    }
+    else{
+      this.title ="MẬT KHẨU KHÔNG KHỚP"
+      this.add_succes = false;
+      setTimeout(()=>{this.add_succes=true;},2000);
+    }
     }
   }
   

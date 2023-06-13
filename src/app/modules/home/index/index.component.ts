@@ -13,6 +13,8 @@ export class IndexComponent implements OnInit {
    public listProducts:any
    public host = environment.BASE_API;
    listProduct_date:any;
+   listHomestay:any;
+
   constructor(private http:HttpClient,private cart:CartService) { }
    
   ngOnInit(): void {
@@ -20,10 +22,10 @@ export class IndexComponent implements OnInit {
     this.http.get<any>(this.host+'/get_all_homestay').subscribe(data => {
       this.listProduct = data;
     })
-    this.http.get<any>(this.host+'/get_gia').subscribe(data => {
-      this.listProducts = data;
+    this.http.get<any>(this.host+'/get_giare').subscribe(data => {
+      this.listHomestay = data;
     })
-    this.http.get<any>(this.host+'/moi_nhat').subscribe(data => {
+    this.http.get<any>(this.host+'/get_moi').subscribe(data => {
       this.listProduct_date = data;
     })
   } 
